@@ -1,0 +1,53 @@
+<% title t "brands" %>
+<% icon_title "briefcase" %>
+<% sub_title t "layout.titles.list" %>
+<% go_back_link root_path %>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4><%= t ".listing" %> <span class="semi-bold"><%= t ".brands" %></span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <table class="table table-hover table-condensed" id="example">
+          <thead>
+            <tr>
+              <th style="width:20%">ID</th>
+              <th style="width:50%"><%= t "properties.name" %></th>
+              <th style="width:30%"><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @brands.each do |brand| %>
+            <tr>
+              <td class="v-align-middle"><%= link_to brand.id, brand_path(brand) %></td>
+              <td class="v-align-middle"><%= brand.name %></td>
+              <td class="v-align-middle">
+                <%= link_to brand, "style"=> "color:light-blue", :title => t("layout.titles.show")  do %>
+                <%= glyph(:eye_open) %>
+                <% end %>
+                <%= link_to edit_brand_path(brand), "style"=> "color:orange", :title => t("layout.titles.edit")  do %>
+                <%= glyph(:edit) %>
+                <% end %>
+                <%= link_to brand_path(brand),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, "style"=> "color:red", :title => t("layout.titles.delete") do %>
+                <%= glyph(:remove) %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to new_brand_path, :class => 'btn btn-primary btn-cons' do%>
+        <%= glyph(:plus) %> <%= t "layout.buttons.create" %> <%= t('.new', :default => t("helpers.links.new")) %> <%= yield(:title) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

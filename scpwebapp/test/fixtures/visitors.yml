@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  vehicle_id: 
+  notes: MyString
+  expiring_time: 2014-12-01 05:21:10
+
+two:
+  person_id: 
+  vehicle_id: 
+  notes: MyString
+  expiring_time: 2014-12-01 05:21:10

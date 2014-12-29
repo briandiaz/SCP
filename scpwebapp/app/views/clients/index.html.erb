@@ -1,0 +1,63 @@
+<% title t "clients" %>
+<% icon_title "users" %>
+<% go_back_link root_path %>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4><%= t "listing" %> <span class="semi-bold"><%= t "clients" %></span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <table class="table table-hover table-condensed" id="example">
+          <thead>
+            <tr>
+              <th style="width:15%">ID</th>
+              <th style="width:25%"><%= t "properties.name" %></th>
+              <th style="width:25%"><%= t "properties.identification_card" %></th>
+              <th style="width:20%"><%= t "properties.phone" %></th>
+              <th style="width:20%"><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.id, client_path(client) %></td>
+          <td><%= link_to person_credentials(client.person), client %></td>
+          <td><%= link_to client.person.identification_card, client %></td>
+
+          <td><%= link_to client.person.phone, client %></td>
+          <td>
+            <%= link_to client, :class => 'btn btn-white btn-xs'  do %>
+            <%= glyph(:eye_open) %>
+            <% end %>
+            <%= link_to edit_client_path(client), :class => 'btn btn-warning btn-xs'  do %>
+            <%= glyph(:edit) %>
+            <% end %>
+            <%= link_to client_path(client),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger btn-xs' do %>
+            <%= glyph(:remove) %>
+            <% end %>
+          </td>
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to new_client_path, :class => 'btn btn-primary btn-md' do %>
+        <%= glyph(:plus_sign) %> <%= t"layout.titles.upgrade" %> <%= t"properties.user" %>
+          <% end %>
+        
+        <%= link_to newclientperson_path, :class => 'btn btn-white btn-md' do %>
+        <%= glyph(:plus_sign) %> <%= t"layout.buttons.create" %> <%= t "client" %>
+          <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>

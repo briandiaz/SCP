@@ -1,0 +1,10 @@
+<% title t "brands" %>
+<% icon_title "briefcase" %>
+<% sub_title "#{t "layout.titles.edit"} # #{@brand.id.to_s}" %>
+<% go_back_link brands_path %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'form' %>
+  </div>
+</div>

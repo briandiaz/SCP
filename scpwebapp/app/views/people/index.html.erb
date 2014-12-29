@@ -1,0 +1,65 @@
+<% title t "users" %>
+<% icon_title "users" %>
+<% go_back_link root_path %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4><%= t "listing" %> <span class="semi-bold"><%= t "users" %></span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <table class="table table-hover table-condensed" id="example" >
+          <thead>
+            <tr>
+              <th style="width:5%">ID</th>
+              <th style="width:10%"><%= t "properties.role" %></th>
+              <th style="width:15%"><%= t "properties.name" %></th>
+              <th style="width:10%"><%= t "properties.sex" %></th>
+              <th style="width:15%"><%= t "properties.identification_card" %></th>
+              <th style="width:10%"><%= t "properties.phone" %></th>
+              <th style="width:10%"><%= t "properties.mobile" %></th>
+              <th style="width:10%"><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+      </thead>
+      <tbody style="font-size:12px">
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.person.id, person_path(user.person) if user.person %></td>
+          <td><%= link_to user.role.name, user.role %></td>
+          <td><%= link_to profile_name(user.person), user.person if user.person %></td>
+          <td><%= link_to user.person.sex, person_path(user.person) if user.person %></td>
+          <td><%= link_to user.person.identification_card, person_path(user.person) if user.person %></td>
+          <td><%= link_to user.person.phone, person_path(user.person) if user.person %></td>
+          <td><%= link_to user.person.mobile, person_path(user.person) if user.person %></td>
+          
+          <td>
+            <%= link_to user.person, :class => 'btn btn-white btn-xs'  do %>
+            <%= glyph(:eye_open) %>
+            <% end  if user.person%>
+            <%= link_to edit_person_path(user.person), :class => 'btn btn-warning btn-xs'  do %>
+            <%= glyph(:edit) %>
+            <% end  if user.person%>
+            <%= link_to person_path(user.person),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger btn-xs' do %>
+            <%= glyph(:remove) %>
+            <% end  if user.person%>
+          </td>
+        </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to new_person_path, :class => 'btn btn-primary btn-md' do %>
+          <%= glyph(:plus_sign) %> Create <%= t('.new', :default => t("helpers.links.new")) %> <%= yield(:title) %>
+          <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>

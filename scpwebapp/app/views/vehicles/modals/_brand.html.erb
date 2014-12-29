@@ -1,0 +1,57 @@
+<div class="modal fade" id="modal_new_brand" tabindex="-1" role="dialog" aria-labelledby="modal_new_brand" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Create New Brand</h4>
+      </div>
+      <div class="modal-body">
+        <div class="grid simple">
+          <div class="grid-title no-border">
+            <h4>Brand's <span class="semi-bold">Details</span></h4>
+            <div class="tools">
+              <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+              <a href="javascript:;" class="reload" data-original-title="" title=""></a>
+            </div>
+          </div>
+          <div class="grid-body no-border">
+            <br>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="alert alert-danger alert-dismissable error_registration_message_brands" style="display:none">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <strong id="error_registration_message_text_brands"></strong>
+                </div>
+                <div class="alert alert-success alert-dismissable success_registration_message_brands" style="display:none">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <strong id="success_registration_message_text_brands"></strong> 
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <form class="new_brand_vehicles" id="new_brand_vehicles" novalidate="novalidate" role="form">
+                  <div class="form-group">
+                    <label class="form-label" for="brand_name">Name</label>
+                    <div class="input-with-icon  right error-control">
+                      <i class="fa-exclamation fa"></i>
+                      <input class="form-control" id="brand_name" name="brand[name]" required="required" type="text">
+                    </div>
+                  </div>
+                  <div class="form-actions">
+                    <div class="pull-right">
+                      <input class="btn btn-primary btn-cons" name="commit" type="submit" value="Save">
+                    </div>
+                  </div>
+                </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

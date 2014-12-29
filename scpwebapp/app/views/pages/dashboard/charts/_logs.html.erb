@@ -1,0 +1,106 @@
+<div class="col-md-8">
+  <div class="grid simple">
+    <div class="grid-title no-border">
+      <h4><%= t "logs" %> <span class="semi-bold"><%= t "layout.dashboard.monthly" %></span></h4>
+      <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+    </div>
+    <div class="grid-body">
+      <div id="logs-chart" class="demo-placeholder" style="width:100%;height:250px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function run_logs_chart(){
+    $("#logs-chart").bind("plothover", function (event, pos, item) {
+          if (item) {
+            var x = item.datapoint[0],
+                y = item.datapoint[1];
+
+            $("#tooltip").html('<h1 style="color: #418bca">' + months[x - 1] + '</h1>' + '<strong>' + y + '</strong>' + ' ' + item.series.label)
+            .css({top: item.pageY-30, left: item.pageX+5})
+            .fadeIn(200);
+          } else {
+            $("#tooltip").hide();
+          }
+        });
+
+        //tooltips options
+        $("<div id='tooltip'></div>").css({
+          position: "absolute",
+          //display: "none",
+          padding: "10px 20px",
+          "background-color": "#ffffff",
+          "z-index":"99999"
+        }).appendTo("body");
+        var d2 = [<% @logs_data["monthly_data"].each do |value| %><%=value%>,<% end %>];
+
+                  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var plot = $.plotAnimator($("#logs-chart"), [{
+          label: "Log Line",
+          data: d2,
+          lines: {
+            fill: 0.6,
+            lineWidth: 3,
+          },
+          color: ['#f89f9f']
+        }, {
+          label: "Logs",
+          data: d2,
+          points: {
+            show: true,
+            fill: true,
+            radius: 6,
+            fillColor: "#f5a6a6",
+            lineWidth: 3
+          },
+          color: '#fff',
+          shadowSize: 1
+        }], {
+          xaxis: {
+            tickLength: 0,
+            tickDecimals: 0,
+            min: 1,
+            ticks: [[1,"JAN"], [2, "FEB"], [3, "MAR"], [4, "APR"], [5, "MAY"], [6, "JUN"], [7, "JUL"], [8, "AUG"], [9, "SEP"], [10, "OCT"], [11, "NOV"], [12, "DEC"]],
+
+            font: {
+              lineHeight: 13,
+              style: "normal",
+              weight: "bold",
+              family: "sans-serif",
+              variant: "small-caps",
+              color: "#6F7B8A"
+            }
+          },
+          yaxis: {
+            ticks: 3,
+            tickDecimals: 0,
+            tickColor: "#f0f0f0",
+            font: {
+              lineHeight: 13,
+              style: "normal",
+              weight: "bold",
+              family: "sans-serif",
+              variant: "small-caps",
+              color: "#6F7B8A"
+            }
+          },
+          grid: {
+            backgroundColor: {
+              colors: ["#fff", "#fff"]
+            },
+            borderWidth: 1,
+            borderColor: 'rgba(255,255,255,.3)',
+            margin: 0,
+            minBorderMargin: 0,
+            labelMargin: 20,
+            hoverable: true,
+            clickable: true,
+            mouseActiveRadius: 6
+          },
+          legend: {
+            show: false
+          }
+        });
+  }
+</script>

@@ -1,0 +1,47 @@
+<% title t "logs" %>
+<% icon_title "list-alt" %>
+<% go_back_link root_path %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4><%= t "listings" %> <span class="semi-bold"><%= t "logs" %></span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+
+        <table class="table table-striped" id="example">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th><%= t "properties.owner" %></th>
+              <th><%= t "properties.vehicle" %></th>
+              <th><%= t "properties.plate" %></th>
+              <th><%= t "cam_location" %></th>
+              <th><%= t "properties.date" %></th>
+              <th><%= t "properties.hour" %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @logs.each do |log| %>
+            <tr>
+              <td><%= log.id %></td>
+              <td><%= link_to log.vehicle.owner do %><%= "#{log.vehicle.owner.person.first_name} #{log.vehicle.owner.person.last_name}" %><% end if log.vehicle.owner  %></td>
+              <td><%= link_to log.vehicle do %><%= "#{log.vehicle.brand.name} - #{log.vehicle.model.name} #{log.vehicle.year}" %><% end if log.vehicle %></td>
+              <td><%= link_to log.vehicle do %><%= "#{log.vehicle.plate_number}" %><% end %></td>
+              <td><%= link_to log.cam_location do %><%= log.cam_location.location %><% end if log.cam_location %></td>
+              <td><%= log.time.strftime("%d/%m/%Y") %></td>
+              <td><%= log.time.strftime("%I:%M %p") %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+
+  <div class="col-md-12">
+
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="grid simple ">
+          <div class="grid-title">
+            <h4><%= t "listings" %> <span class="semi-bold"><%= t "logs" %></span></h4>
+            <div class="tools">
+              <a href="javascript:;" class="collapse"></a>
+              <a href="javascript:;" class="reload"></a>
+            </div>
+          </div>
+          <div class="grid-body ">
+            <table class="table table-striped table-sortable-logs" id="example">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th><%= t "properties.owner" %></th>
+                  <th><%= t "properties.vehicle" %></th>
+                  <th><%= t "properties.plate" %></th>
+                  <th><%= t "cam_location" %></th>
+                  <th><%= t "properties.date" %></th>
+                  <th><%= t "properties.hour" %></th>
+                </tr>
+              </thead>
+
+              <tbody id="table_latest_logs">
+                <% @latest_logs.each do |log| %>
+                <tr data-log-id="<%= log.id %>"  data-toggle="modal" data-target="#latestLogModal">
+                  <td><%= log.id %></td>
+                  <td><%= "#{log.vehicle.owner.person.first_name} #{log.vehicle.owner.person.last_name}" %></td>
+                  <td><%= "#{log.vehicle.brand.name} - #{log.vehicle.model.name} #{log.vehicle.year}" %></td>
+                  <td><%= log.vehicle.plate_number %></td>
+                  <td><%= log.cam_location.location if log.cam_location %></td>
+                  <td><%= log.time.strftime("%d/%m/%Y") %></td>
+                  <td><%= log.time.strftime("%I:%M:%S %p") %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

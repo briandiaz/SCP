@@ -1,0 +1,124 @@
+<div class="modal fade" id="modal_new_vehicle" tabindex="-1" role="dialog" aria-labelledby="modal_new_vehicle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Create New Vehicle</h4>
+      </div>
+      <div class="modal-body">
+        <div class="grid simple">
+          <div class="grid-title no-border">
+            <h4>Vehicle's <span class="semi-bold">Details</span></h4>
+            <div class="tools">
+              <a href="javascript:;" class="collapse"></a>
+              <a href="javascript:;" class="reload"></a>
+            </div>
+          </div>
+          <div class="grid-body no-border">
+            <br>
+
+            <form class="visitor_new_vehicle" id="visitor_new_vehicle" novalidate="novalidate" role="form">
+
+    <div class="form-group" style="display:none">
+        <label class="form-label" for="visitor_vehicle_owner_id">Owner</label>
+        <div class="input-with-icon  right error-control">
+            <i class="fa-exclamation fa"></i>
+            <select class="form-control" id="visitor_vehicle_owner_id" name="visitor_vehicle[owner_id]" required="required">
+                <option value="">Select the Owner</option>
+                <option value="15" selected>Cuenta Visitas</option>
+            </select>
+        </div>
+    </div>
+
+<div class="form-group">
+    <label class="form-label" for="visitor_vehicle_brand_id">Brand</label>
+    <div class="input-with-icon  right error-control">
+        <i class="fa-exclamation fa"></i>
+        <div class="col-sm-9">
+            
+           <%= collection_select(
+    "visitor_vehicle",
+    :brand_id,
+    Brand.all(:include => :models), 
+    :id,
+    :name,
+    {:prompt => "Select the Brand"},
+    {:class => "form-control",:required => true}
+    ) %>
+        </div>
+        <div class="col-sm-3">
+            <a data-toggle="modal" class="btn btn-primary btn-cons" data-target="#modal_new_brand"><span class="fa fa-plus-square"></span> New</a>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="form-label" for="visitor_vehicle_model_id">Model</label>
+    <div class="input-with-icon  right error-control">
+        <i class="fa-exclamation fa"></i>
+        <div class="col-sm-9">
+            <select id="visitor_vehicle_model_id" name="visitor_vehicle[model_id]">
+                <option value=""></option>
+              <% Brand.all.each do |brand| %>
+              <optgroup label="<%= brand.name %>">
+                <% Model.where(brand_id:brand.id).each do |model|%>
+                <option value="<%= model.id %>"><%= model.name %></option>
+                <%end%>
+                </optgroup>
+              <% end %>
+            </select>
+
+        </div>
+        <div class="col-sm-3">
+            <a data-toggle="modal" class="btn btn-primary btn-cons" data-target="#modal_new_model"><span class="fa fa-plus-square"></span> New</a>
+        </div>
+    </div>
+</div>
+  <div class="form-group">
+          <label class="form-label" for="vehicle_year">Year</label>
+          <div class="input-with-icon  right error-control">
+            <i class="fa-exclamation fa"></i>
+            <input class="form-control" id="vehicle_year" name="vehicle[year]" required="required" type="text" />
+          </div>
+        </div>
+    <div class="form-group">
+        <label class="form-label" for="vehicle_color">Color</label>
+        <div class="input-with-icon  right error-control">
+            <i class="fa-exclamation fa"></i>
+            <input class="form-control" id="visitor_vehicle_color" name="visitor_vehicle[color]" required="required" type="text" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="visitor_vehicle_special_signs">Special signs</label>
+        <div class="input-with-icon  right error-control">
+            <textarea class="form-control" id="visitor_vehicle_special_signs" name="visitor_vehicle[special_signs]">
+            </textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="visitor_vehicle_plate_number">Plate number</label>
+        <div class="input-with-icon  right error-control">
+            <i class="fa-exclamation fa"></i>
+            <input class="form-control" id="visitor_vehicle_plate_number" name="visitor_vehicle[plate_number]" required="required" type="text" />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <div class="pull-right">
+            <input class="btn btn-primary btn-cons" type="submit" value="Save" />
+        </div>
+    </div>
+</form>
+          </div>
+        </div>
+      <%= render "vehicles/modals/brand" %>
+      <%= render "vehicles/modals/model", :locals => { @brands => Brand.all(:include => :models) } %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

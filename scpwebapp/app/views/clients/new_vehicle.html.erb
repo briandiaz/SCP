@@ -1,0 +1,123 @@
+<% title t "clients" %>
+<% icon_title "users" %>
+<% sub_title "#{t("layout.titles.new")} #{t("vehicles")}" %>
+<% go_back_link @client %>
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="grid simple">
+    <div class="grid-title no-border">
+      <h4>Vehicle's <span class="semi-bold">Details</span></h4>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
+        <a href="javascript:;" class="reload"></a>
+      </div>
+    </div>
+    <div class="grid-body no-border">
+      <br>
+
+      <%= form_for @vehicle, :html => {:role => "form", :novalidate =>"novalidate"}  do |f| %>
+      <% if @vehicle.errors.any? %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Nooo!</strong> We've found <%= pluralize(@vehicle.errors.count, "error") %>. <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        <ul>
+          <% @vehicle.errors.full_messages.each do |msg| %>
+          <li class="alert-link"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+<div class="form-group" style="display:none">
+        <label class="form-label" for="vehicle_owner_id">Owner</label>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <input type="number" class="form-control" id="vehicle_owner_id" name="vehicle[owner_id]" required="required" value="<%= @client.id %>"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :brand_id, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <div class="col-sm-9">
+            <%= collection_select(
+    :vehicle,
+    :brand_id,
+    Brand.all(:include => :models), 
+    :id,
+    :name,
+    {:prompt => "Select the Brand"},
+    {:class => "form-control",:required => true}
+    ) %>
+          </div>
+          <div class="col-sm-3">
+            <a data-toggle="modal" class="btn btn-primary btn-cons" data-target="#modal_new_brand"><span class="fa fa-plus-square"></span> New</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :model_id, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <div class="col-sm-9">
+            <%= 
+f.grouped_collection_select(
+  :model_id, 
+  Brand.all(:include => :models),
+  :models, 
+  :name, 
+  :id,   
+  :name, 
+  include_blank: true
+  )
+%>
+
+          </div>
+          <div class="col-sm-3">
+            <a data-toggle="modal" class="btn btn-primary btn-cons" data-target="#modal_new_model"><span class="fa fa-plus-square"></span> New</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :year, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <%= f.text_field :year, :class => 'form-control',:required => true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :color, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <%= f.text_field :color, :class => 'form-control',:required => true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :special_signs, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <%= f.text_area :special_signs, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :plate_number, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <%= f.text_field :plate_number, :class => 'form-control',:required => true %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <div class="pull-right">
+          <%= f.submit "Save", :class => 'btn btn-primary btn-cons' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "vehicles/modals/brand" %>
+<%= render "vehicles/modals/model", :locals => { @brands => @brands } %>

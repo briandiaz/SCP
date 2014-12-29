@@ -1,0 +1,38 @@
+<% title t "models" %>
+<% icon_title "archive" %>
+<% sub_title "#" + @model.id.to_s %>
+<% go_back_link models_path %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 ">	
+    <div class="grid simple ">
+      <div class="grid-title">
+        <%= link_to edit_model_path(@model), :class => 'btn btn-warning'  do %>
+            <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+            <% end %>
+            <%= link_to model_path(@model),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger' do %>
+            <%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+            <% end %>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <img src="<%= @model_image %>" data-src="<%= @model_image %>" data-src-retina="<%= @model_image %>" alt="" class="img-thumbnail"> 
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <h3><%= link_to @model.brand.name, @model.brand, "data-toggle"=>"tooltip", "data-placement"=>"top", :title => "Brand" %> - <b><%= link_to @model.name, @model, "data-toggle"=>"tooltip", "data-placement"=>"top", :title =>"Model" %></b></h3>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> 
+</div> 

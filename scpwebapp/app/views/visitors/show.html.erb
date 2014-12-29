@@ -1,0 +1,55 @@
+<% title t "visitors" %>
+<% icon_title "users" %>
+<% sub_title "# " + @visitor.id.to_s %>
+<% go_back_link visitor_path %>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 "> 
+    <div class="grid simple ">
+      <div class="grid-title">
+        <%= link_to edit_visitor_path(@visitor) , :class => 'btn btn-warning'  do %>
+        <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+        <% end %>
+        <%= link_to @visitor,
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+:class => 'btn btn-danger' do %>
+        <%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+        <% end %>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <p id="notice"><%= notice %></p>
+            <% if @visitor.person.remote_photo  %>
+            <%= link_to @visitor.person do%><img class="img-responsive" src="<%= @visitor.person.remote_photo%>" alt="visitor photo"><% end %>
+            <% end %>
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <dl class="dl-horizontal">
+              <dt><strong><%= t"properties.first_name" %>:</strong></dt>
+              <dd><%= @visitor.person.first_name %></dd>
+              <dt><strong><%= t"properties.last_name" %>:</strong></dt>
+              <dd><%= @visitor.person.last_name %></dd>
+              <dt><strong><%= t"properties.identification_card" %>:</strong></dt>
+              <dd><%= @visitor.person.identification_card %></dd>
+              <dt><strong><%= t"properties.notes" %>:</strong></dt>
+              <dd><%= @visitor.notes %></dd>
+              <dt><strong><%= t"properties.expiringtime" %>:</strong></dt>
+              <dd><%= @visitor.expiring_time.strftime("Expira en %B %d at %I:%M %p del %Y") %></dd>
+              <dt><strong><%= t"vehicle" %>:</strong></dt>
+              <dd><%= link_to @visitor.vehicle do %><%= "#{@visitor.vehicle.brand.name} - #{@visitor.vehicle.model.name} (#{@visitor.vehicle.year})" if @visitor.vehicle %><% end %></dd>
+            </dl>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> 
+</div> 

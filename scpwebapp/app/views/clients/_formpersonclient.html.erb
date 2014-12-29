@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="alert alert-danger alert-dismissable error_registration_message" style="display:none">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <strong id="error_registration_message_text"></strong>
+    </div>
+    <div class="alert alert-success alert-dismissable success_registration_message" style="display:none">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <strong id="success_registration_message_text"></strong> 
+    </div>
+  </div>
+</div>
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="grid simple">
+    <div class="grid-title no-border">
+      <h4><%= t "clients" %> <%= t("form.titles.details").html_safe %></h4>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
+        <a href="javascript:;" class="reload"></a>
+      </div>
+    </div>
+    <div class="grid-body no-border">
+      <form  class="form-no-horizontal-spacing" id="register_person_client_form" novalidate="novalidate" role="form">
+        <input type="hidden" id="person_id">
+        <div class="row column-seperation">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+              <div class="form-group col-md-12 legend">
+                <h4><%= t("form.titles.personal_settings").html_safe %></h4>
+                <p><%= t("form.titles.client_personal_settings") %></p>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-5">
+                <input class="form-control" id="person_first_name" name="person[first_name]" placeholder="<%= t('properties.first_name') %>" required="required" type="text">
+              </div>
+              <div class="col-md-7">
+                <input class="form-control" id="person_last_name" name="person[last_name]" placeholder="<%= t('properties.last_name') %>" required="required" type="text">
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-5">
+                <div class="col-sm-6">
+                  <div class="radio radio-transparent">
+                    <input checked="checked" id="person_sex_male" name="person_sex" type="radio" value="Male">
+                    <label for="person_sex_male">Male</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="radio radio-transparent">
+                    <input id="person_sex_female" name="person_sex" type="radio" value="Female">
+                    <label for="person_sex_female">Female</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <input class="form-control" data-mask="999-9999999-9" id="person_identification_card" name="person[identification_card]" placeholder="<%= t('properties.identification_card') %>" required="required" type="text">
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-12">
+                <input class="form-control" id="person_email" name="person[email]" placeholder="<%= t('properties.email') %>" required="required" type="text">
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-md-5">
+                <input class="form-control" data-mask="(899) 999-9999" id="person_phone" name="person[phone]" placeholder="<%= t('properties.phone') %>" required="required" type="text">
+              </div>
+              <div class="col-md-7">
+                <input class="form-control" data-mask="(899) 999-9999" id="person_mobile" name="person[mobile]" placeholder="<%= t('properties.mobile') %>" required="required" type="text">
+              </div>
+            </div>
+            <div class="form-actions">
+              <div class="pull-right">
+                <input class="btn btn-primary btn-cons" name="commit" type="submit" value="<%= t('form.buttons.continue') %>">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<% title t "visitors" %>
+<% icon_title "users" %>
+<% go_back_link root_path %>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4><%= t "listing" %> <span class="semi-bold"><%= t "visitors" %></span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <table class="table table-hover table-condensed" id="example" >
+          <thead>
+            <tr>
+              <th style="width:5%">ID</th>
+              <th style="width:15%"><%= t "properties.name" %></th>
+              <th style="width:15%"><%= t "properties.last_name" %></th>
+              <th style="width:15%"><%= t "properties.identification_card" %></th>
+              <th style="width:15%"><%= t "properties.expiringtime" %></th>
+              <th style="width:20%"><%= t "vehicle" %></th>
+              <th style="width:15%"><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+      </thead>
+      <tbody style="font-size:12px">
+        <% @visitors.each do |visitor| 
+  if visitor.person && visitor.vehicle
+      %>
+        
+        <tr>
+          <td><%= visitor.id %></td>
+          <td><%= visitor.person.first_name %></td>
+          <td><%= visitor.person.last_name %></td>
+          <td><%= visitor.person.identification_card %></td>
+          <td><%= visitor.expiring_time %></td>
+          <td><%= "#{visitor.vehicle.brand.name} - #{visitor.vehicle.model.name} (#{visitor.vehicle.year})"  %></td>
+          
+          <td>
+            <%= link_to visitor, :class => 'btn btn-white btn-xs'  do %>
+            <%= glyph(:eye_open) %>
+            <% end %>
+            <%= link_to edit_visitor_path(visitor), :class => 'btn btn-warning btn-xs'  do %>
+            <%= glyph(:edit) %>
+            <% end %>
+            <%= link_to person_path(visitor),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger btn-xs' do %>
+            <%= glyph(:remove) %>
+            <% end %>
+          </td>
+        </tr>
+            <% 
+          end
+        end %>
+          </tbody>
+        </table>
+        <%= link_to new_visitor_path, :class => 'btn btn-primary btn-md' do %>
+          <%= glyph(:plus_sign) %> Create <%= t('.new', :default => t("helpers.links.new")) %> <%= yield(:title) %>
+          <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+<% personal_set = ""
+if I18n.locale == :en 
+  personal_set = "#{t"layout.account.personal"} #{t"layout.account.settings"}" 
+elsif I18n.locale == :es 
+  personal_set = "#{t"layout.account.settings"} #{t"layout.account.personal"}" 
+end
+%>
+<% title t "layout.account.account" %>
+<% icon_title "cog" %>
+<% sub_title personal_set %>
+<% go_back_link root_path %>
+
+<div class="col-md-4">
+  <div class=" tiles white col-md-12 no-padding">
+    <div class="tiles green cover-pic-wrapper">           
+      <div class="overlayer bottom-right">
+        <div class="overlayer-wrapper">
+          <div class="padding-10 hidden-xs">                  
+            <button type="button" class="btn btn-primary btn-small"><i class="fa fa-check"></i>&nbsp;&nbsp;<%=t"layout.account.this_is_you"%></button>
+          </div>
+        </div>
+      </div>
+      <img src="http://scpcdn.cf/web/assets/img/cover_pic.png" alt="">
+    </div>
+    <div class="tiles white">
+
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <div class="user-profile-pic">  
+            <img width="69" height="69" data-src-retina="<%= @person.photo_url(:medium).to_s %>" data-src="<%= @person.photo_url(:medium).to_s %>" src="<%= @person.photo_url(:medium).to_s %>" alt="">
+          </div>
+        </div>
+        <div class="col-md-6 user-description-box  col-sm-6">
+          <h4 class="semi-bold no-margin"><%= profile_name_current_user %></h4>
+          <h6 class="no-margin"><%= current_user.role.name %></h6>
+          <br>
+          <p><a href="tel:<%= current_user.person.phone %>"><i class="fa fa-phone"></i><%= t"properties.call" %> <%= t"properties.phone" %></a></p>
+          <p><a href="tel:<%= current_user.person.mobile %>"><i class="fa fa-mobile-phone"></i><%= t"properties.call" %> <%= t"properties.mobile" %></a></p>
+          <p><a href="mailto:<%= current_user.person.email %>"><i class="fa fa-envelope"></i><%= t"properties.send_message" %></a></p>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>  
+</div>
+<div class="col-md-8">
+  <div class="col-sm-12">
+    <section class="tile left-nav transparent">
+      <!-- tile left-side -->
+      <div class="tile-left-side nopadding color transparent-black rounded-left-corners">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs tabs-left">
+          <li class="active"><a href="#tab1" data-toggle="tab"><%= "#{t"layout.account.personal"} #{t"layout.account.settings"}" if I18n.locale == :en  %><%= "#{t"layout.account.settings"} #{t"layout.account.personal"}" if I18n.locale == :es  %></a></li>
+          <li><a href="#tab2" data-toggle="tab"><%= "#{t"layout.account.user"} #{t"layout.account.account"}" if I18n.locale == :en %> <%= "#{t"layout.account.account"} de #{t"layout.account.user"}" if I18n.locale == :es %> </a></li>
+          <li><a href="#tab3" data-toggle="tab"><%= "#{t"layout.account.app"} #{t"layout.account.settings"}" if I18n.locale == :en  %><%= "#{t"layout.account.settings"} de #{t"layout.account.app"}" if I18n.locale == :es  %></a></li>
+        </ul>
+        <!-- / Nav tabs -->
+      </div>
+      <!-- /tile left-side -->
+
+
+      <!-- tile body -->
+
+      <div class="tile-body rounded-right-corners">
+        <div class="tab-content">
+          <div class="tab-pane active transparent-black" id="tab1">
+
+            <%= form_for @person, :html => {:multipart => true, :role => "form", :class => "profile-settings"}  do |f| %>
+
+            <div class="row">
+
+              <div class="form-group col-sm-10">
+                <%= f.label :photo, :class => "col-lg-2 control-label" %>
+                <div class="col-lg-10">
+                  <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                      <% if @person.photo? %>
+                      <%= image_tag @person.photo_url(:medium).to_s %>
+                      <%else%><img src="https://avatars2.githubusercontent.com/u/2363531" alt="" ><%end%>
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                    <div>
+                      <span class="btn btn-default btn-file"><span class="fileinput-new">Select Photo</span><span class="fileinput-exists">Change</span>
+                        <%= f.file_field :photo, :class => "form-control", :placeholder => "Select Image"  %></span>
+                      <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="form-group col-sm-4">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name, :class => 'form-control',:required => true, :value => @person.first_name %>
+              </div>
+
+              <div class="form-group col-sm-4">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name, :class => 'form-control',:required => true, :value => @person.last_name %>
+              </div>
+
+              <div class="form-group col-sm-4">
+                <%= f.label :identification_card, :class => 'control-label' %>
+                <%= f.text_field :identification_card, :class => 'form-control', "data-mask" => "999-9999999-9", :required => true, :value => @person.identification_card %>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="form-group col-sm-6">
+                <label class="col-sm-4 control-label">Sex</label>
+                <div class="col-sm-6">
+                  <div class="col-sm-6">
+
+                    <div class="radio radio-transparent">
+                      <%= f.radio_button :sex, "Male", :checked => true %>
+                      <%= f.label :sex, "Male", :value => "Male"  %>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="radio radio-transparent">
+                      <%= f.radio_button :sex, "Female" %>
+                      <%= f.label :sex, "Female", :value => "Female" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-sm-6">
+                <%= f.label :email %>
+                <%= f.text_field :email, :class => 'form-control',:required => true, :value => @person.email %>
+              </div>
+            </div>
+
+
+            <div class="row">
+
+              <div class="form-group col-sm-6">
+                <%= f.label :phone %>
+                <%= f.text_field :phone, :class => 'form-control', "data-mask" => "(899) 999-9999", :required => true, :value => @person.phone %>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <%= f.label :mobile %>
+                <%= f.text_field :mobile, :class => 'form-control', "data-mask" => "(899) 999-9999", :required => true, :value => @person.mobile %>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= f.submit "Actualizar", :class => 'btn btn-primary' %>
+                </div>
+              </div>
+
+            </div>
+
+            <% end %>
+          </div>
+          <div class="tab-pane" id="tab2" style="min-height:350px">
+            <%= form_tag "/auth/identity/register", role: "form", class: "form-horizontal"  do %>
+            <div class="form-group">
+              <label class="control-label col-lg-3" for="username">Username</label>
+              <div class="col-lg-9">
+                <input class="form-control" id="username" name="username" required="required" type="text" value="<%= @identity.username %>" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-lg-3" for="password">Password</label>
+              <div class="col-lg-9">
+                <input class="form-control" id="password" name="password" placeholder="Password" required="required" type="password" value="<%= @identity.password %>" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-lg-3" for="password_confirmation">Password confirmation</label>
+              <div class="col-lg-9">
+                <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Password" required="required" type="password" value="<%= @identity.password_confirmation %>" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-primary" id="register_user" name="commit" type="submit" value="Actualizar" />
+              </div>
+            </div>
+
+            <% end %>
+          </div>
+
+          <div class="tab-pane" id="tab3" style="min-height:350px">
+            <div class="row">
+              <div class="col-sm-6">
+                <label><span class="glyphicon glyphicon-global"></span> <%= t "language.language" %></label>
+              </div>
+              <div class="col-sm-6">
+                <div class="col-sm-6">
+                  <%= link_to_unless I18n.locale == :en, t("language.english"), language_english_path %>
+                  |
+                  <%= link_to_unless I18n.locale == :es, t("language.spanish"), language_spanish_path %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /tile body -->
+    </section>
+  </div>
+</div>

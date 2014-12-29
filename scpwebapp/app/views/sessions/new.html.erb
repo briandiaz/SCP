@@ -1,0 +1,22 @@
+<% if current_user %>
+  <h1>User Profile</h1>
+  <p>
+    <strong>Person:</strong>
+    <%= current_user.person %>
+  </p>
+  <p>
+    <strong>Role:</strong>
+    <%= current_user.role.name %>
+  </p>
+  <p>
+    <strong>Provider:</strong>
+    <%= current_user.provider %>
+  </p>
+  <p>
+    <strong>OmniAuth UID:</strong>
+    <%= current_user.uid %>
+  </p>
+  <p><%= link_to "Log out", logout_path %></p>
+<% else %>
+  <%= render "sessions/login" %>
+<% end %>

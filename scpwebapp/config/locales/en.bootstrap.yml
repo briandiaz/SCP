@@ -1,0 +1,133 @@
+en:
+  language:
+    language: "Language"
+    spanish: "Spanish"
+    english: "English"
+  
+  helpers:
+    actions: "Actions"
+    links:
+      back: "Back"
+      cancel: "Cancel"
+      confirm: "Are you sure?"
+      destroy: "Delete"
+      new: "New"
+      edit: "Edit"
+      register_vehicle: "Register vehicle"
+    titles:
+      edit: "Edit %{model}"
+      save: "Save %{model}"
+      new: "New %{model}"
+      delete: "Delete %{model}"
+      
+  accounts: "Accounts"
+  brands: "Brands"
+  models: "Models"
+  clients: "Clients"
+  cam_locations: "Cam Locations"
+  users: "Users"
+  visitors: "Visitors"
+  people: "People"
+  roles: "Roles"
+  vehicles: "Vehicles"
+  listing: "Listing"
+  notifications: "Notifications"
+  
+  logs: "Logs"
+  log: "Log"
+  
+  client: "Client"
+  vehicle: "Vehicle"
+  
+  form:
+    errors:
+      change: "Change a few things up"
+      try: "and try submitting again"
+      found: "We've found"
+    buttons:
+      cancel: "Cancel"
+      save: "Save"
+      continue: "Continue"
+    titles:
+      details: "<span class='semi-bold'>Details</span>"
+      personal_settings: "<strong>Personal</strong> Settings"
+      personal_settings_tab: "Personal Settings"
+      client_personal_settings: "Client personal settings"
+      user_personal_settings: "User account settings"
+      user_account: "User Account"
+      select_by_identification_card: "Select the Person by its Identification Card"
+      sure: "Are you sure?"
+    messages:
+      successfully_created: "was successfully created."
+      
+  layout:
+    titles:
+      edit: "Edit"
+      new: "New"
+      show: "Show"
+      delete: "Delete"
+      list: "List"
+      show_all: "Show All"
+      statistics: "Statistics"
+      upgrade: "Upgrade"
+    dashboard:
+      than_last_month: "than last month"
+      this_month: "This Month's"
+      overall: "Overall"
+      higher: "higher"
+      lower: "lower"
+      monthly: "Monthly"
+      relation: "Relation"
+    account:
+      account: "Account"
+      user: "User"
+      setting: "Setting"
+      settings: "Settings"
+      app: "App"
+      personal: "Personal"
+      this_is_you: "This is you"
+      my_account: "My Account"
+      logout: "Logout"
+    buttons:
+      create: "Create"
+      
+    
+  properties:
+    status: "Status"
+    name: "Name"
+    email: "Email"
+    username: "Username"
+    password: "Password"
+    user: "User"
+    brand: "Brand"
+    model: "Model"
+    plate: "Plate"
+    identification_card: "Identification Card"
+    owner: "Owner"
+    year: "Year"
+    color: "Color"
+    special_signs: "Special Signs"
+    location: "Location"
+    ip_address: "IP Address"
+    mac_address: "MAC Address"
+    first_name: "First Name"
+    last_name: "Last Name"
+    sex: "Sex"
+    male: "Male"
+    female: "Female"
+    phone: "Phone"
+    mobile: "Mobile"
+    value: "Value"
+    search: "Search"
+    browse: "Browse"
+    time: "Time"
+    created_at: "Created At"
+    updated_at: "Updated At"
+    role: "Role"
+    hour: "Hour"
+    date: "Date"
+    call: "Call"
+    send_message: "Send Message"
+    notes: "Notes"
+    expiringtime: "Expiring Time"
+ 

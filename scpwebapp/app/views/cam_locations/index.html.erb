@@ -1,0 +1,58 @@
+<% title t "cam_locations" %>
+<% icon_title "video-camera" %>
+<% sub_title t "layout.titles.list" %>
+<% go_back_link root_path %>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="grid simple ">
+      <div class="grid-title">
+        <h4>Listing <span class="semi-bold">Cam Locations</span></h4>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <table class="table table-hover table-condensed" id="example">
+          <thead>
+            <tr>
+              <th style="width:15%">ID</th>
+              <th style="width:25%"><%= t "properties.location" %></th>
+              <th style="width:20%"><%= t "properties.ip_address" %></th>
+              <th style="width:20%"><%= t "properties.mac_address" %></th>
+              <th style="width:20%"><%=t '.actions', :default => t("helpers.actions") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cam_locations.each do |cam_location| %>
+              <tr>
+                <td><%= link_to cam_location.id, cam_location  %></td>
+                <td><%= link_to cam_location.location, cam_location %></td>
+                <td><%= cam_location.ip_addres %></td>
+                <td><%= cam_location.mac_address %></td>
+                <td>
+                  <%= link_to cam_location, :class => 'btn btn-xs btn-white'  do %>
+                    <%= glyph(:eye_open) %>
+                  <% end %>
+                  <%= link_to edit_cam_location_path(cam_location), :class => 'btn btn-xs btn-warning'  do %>
+                    <%= glyph(:edit) %>
+                  <% end %>
+                  <%= link_to cam_location_path(cam_location),
+                                  :method => 'delete',
+                                  :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-xs btn-danger' do %>
+                    <%= glyph(:remove) %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to new_cam_location_path, :class => 'btn btn-primary btn-md' do %>
+          <%= glyph(:plus_sign) %> <%= t "layout.buttons.create" %> <%= t('.new', :default => t("helpers.links.new")) %> <%= yield(:title) %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

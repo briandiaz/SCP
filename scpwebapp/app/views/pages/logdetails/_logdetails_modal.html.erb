@@ -1,0 +1,293 @@
+<input type="hidden" id="current_latest_log_timestamp" value="<%= @log.time.strftime('%d/%m/%Y %I:%M:%S.%L %p') %>" />
+<div class="modal fade" tabindex="-1" role="dialog" id="latestLogModal" aria-labelledby="latestLogModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col-md-4">
+          <div class=" tiles white col-md-12 no-padding">
+            <div class="tiles white cover-pic-wrapper"> 
+              <img src="" id="latest_log_left_vehicle_img" class="img-responsive" alt="">
+            </div>
+            <div class="tiles white">
+
+
+              <div class="row">
+                <div class="col-md-3 col-sm-3">
+                  <div class="user-profile-pic">  
+                    <img width="69" height="69" id="latest_log_left_user_img" src="" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8 user-description-box  col-sm-8">
+                  <h4 class="semi-bold no-margin" id="latest_log_left_user_name"></h4>
+                  <h6 class="no-margin" id="latest_log_left_user_sex"></h6>
+                  <br>
+                  <p><a href="" title="" data-original-title="Identification Card" id="latest_log_left_user_id"><i class="fa fa-credit-card"></i></a></p>
+                  <p><a href="" title="" data-original-title="Call Phone" id="latest_log_left_user_phone"><i class="fa fa-phone"></i></a></p>
+                  <p><a href="" title="" data-original-title="Call Mobile" id="latest_log_left_user_mobile"><i class="fa fa-mobile-phone"></i></a></p>
+                  <p><a href="" title="" data-original-title="Send Message" id="latest_log_left_user_email"><i class="fa fa-envelope"></i></a></p>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>  
+        </div>
+
+        <div class="col-md-8">
+          <div class="col-sm-12">
+            <section class="tile left-nav transparent">
+              <!-- tile left-side -->
+              <div class="tile-left-side nopadding color transparent-black rounded-left-corners">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-left">
+                  <li class="active"><a href="#tab1" data-toggle="tab" data-original-title="" title=""><%= t"vehicle" %></a></li>
+                  <li class=""><a href="#tab2" data-toggle="tab" data-original-title="" title=""><%= t"client" %></a></li>
+                  <li class=""><a href="#tab3" data-toggle="tab" data-original-title="" title=""><%= t"log" %></a></li>
+                </ul>
+                <!-- / Nav tabs -->
+              </div>
+              <!-- /tile left-side -->
+
+
+              <!-- tile body -->
+
+              <div class="tile-body rounded-right-corners">
+                <div class="tab-content">
+                  <div class="tab-pane transparent-black active" id="tab1">
+                    <div class="grid simple ">
+                      <div class="grid-title">
+                        <div class="tools">
+                          <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                          <a href="javascript:;" class="reload" data-original-title="" title=""></a>
+                        </div>
+                      </div>
+                      <div class="grid-body ">
+                        <div class="row">
+                          <div class="col-sm-5 col-md-5">
+                            <img src="" class="img-responsive" id="lastlog_vehicle_image">
+                          </div>
+                          <div class="col-sm-7 col-md-7">
+                            <dl class="dl-horizontal">
+                              <dt><strong>Brand:</strong></dt>
+                              <dd id="lastlog_vehicle_brand"></dd>
+                              <dt><strong>Model:</strong></dt>
+                              <dd id="lastlog_vehicle_model"></dd>
+                              <dt><strong>Year:</strong></dt>
+                              <dd id="lastlog_vehicle_year"></dd>
+                              <dt><strong>Color:</strong></dt>
+                              <dd id="lastlog_vehicle_color"></dd>
+                              <dt><strong>Special signs:</strong></dt>
+                              <dd id="lastlog_vehicle_special_signs"></dd>
+                              <dt><strong>Plate number:</strong></dt>
+                              <dd id="lastlog_vehicle_plate_number"></dd>
+                            </dl>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane" id="tab2">
+
+                    <div class="grid simple ">
+                      <div class="grid-title">
+                        <div class="tools">
+                          <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                          <a href="javascript:;" class="reload" data-original-title="" title=""></a>
+                        </div>
+                      </div>
+                      <div class="grid-body ">
+                        <div class="row">
+                          <div class="col-sm-4 col-md-4">
+                            <img src="" class="img-responsive" id="lastlog_owner_image">
+                          </div>
+                          <div class="col-sm-8 col-md-8">
+                            <dl class="dl-horizontal">
+                              <dt><strong>First Name:</strong></dt>
+                              <dd id="lastlog_owner_firstname"></dd>
+                              <dt><strong>Last Name:</strong></dt>
+                              <dd id="lastlog_owner_lastname"></dd>
+                              <dt><strong>Sex:</strong></dt>
+                              <dd id="lastlog_owner_sex"></dd>
+                              <dt><strong>Email:</strong></dt>
+                              <dd id="lastlog_owner_email"></dd>
+                              <dt><strong>Phone:</strong></dt>
+                              <dd id="lastlog_owner_phone"></dd>
+                              <dt><strong>Mobile:</strong></dt>
+                              <dd id="lastlog_owner_mobile"></dd>
+                            </dl>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="tab3">
+
+                    <div class="grid simple ">
+                      <div class="grid-title">
+                        <div class="tools">
+                          <a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+                          <a href="javascript:;" class="reload" data-original-title="" title=""></a>
+                        </div>
+                      </div>
+                      <div class="grid-body ">
+                        <div class="row">
+                          <div class="col-sm-4 col-md-4">
+                            <img src="" class="img-responsive" id="lastlog_cam_image">
+                          </div>
+                          <div class="col-sm-8 col-md-8">
+                            <dl class="dl-horizontal">
+                              <dt><strong>ID:</strong></dt>
+                              <dd id="lastlog_id"></dd>
+                              <dt><strong>Location:</strong></dt>
+                              <dd id="lastlog_location"></dd>
+                              <dt><strong>IP Address:</strong></dt>
+                              <dd id="lastlog_ip_address"></dd>
+                              <dt><strong>Mac Address:</strong></dt>
+                              <dd id="lastlog_mac_address"></dd>
+                              <dt><strong>Date:</strong></dt>
+                              <dd id="lastlog_date"></dd>
+                              <dt><strong>Time:</strong></dt>
+                              <dd id="lastlog_hour"></dd>
+                              <dt style="display:none"><strong>Timestamp:</strong></dt>
+                              <dd style="display:none" id="lastlog_timestamp"></dd>
+                            </dl>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- /tile body -->
+            </section>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function get_last_log(){
+    var current_log_timestamp =  $("#current_latest_log_timestamp").val();
+
+    var table = $("#table_latest_logs");
+    var new_log = "";
+    $.ajax({
+      type: "GET",
+      url: '/livelog.json',
+      dataType: "json",
+      async: false,
+      statusCode: {
+        200: function(data) {
+          if(current_log_timestamp != data.log.timestamp){
+            $("#current_latest_log_timestamp").val(data.log.timestamp);
+            current_log_timestamp = current_log_timestamp;
+            new_log = "<tr  class=\" animated bounceIn\">";
+            new_log += "<td>"+data.log.id+"</td>";
+            new_log += "<td>"+data.vehicle.owner.person.first_name+" "+data.vehicle.owner.person.last_name+"</td>";
+            new_log += "<td>"+data.vehicle.brand.name+" - "+data.vehicle.model.name+" "+data.vehicle.year+"</td>";
+            new_log += "<td>"+data.vehicle.plate_number+"</td>";
+            new_log += "<td>"+data.log.cam_location.location+"</td>";
+            new_log += "<td>"+data.log.date+"</td>";
+            new_log += "<td>"+data.log.hour+"</td>";
+            new_log += "</tr>";
+            table.prepend(new_log);
+          }
+        },
+        500: function(xhr, textStatus, errorThrown) {
+        },
+        402: function(xhr, textStatus, errorThrown) {
+        },
+        400: function(xhr, textStatus, errorThrown) {
+        },
+        406: function(xhr, textStatus, errorThrown) {
+        }
+      }
+    });
+  }
+
+  function show_log(id){
+    var lastlog_cam_image, lastlog_date, lastlog_hour, lastlog_id, lastlog_ip_address, lastlog_location, lastlog_mac_address, lastlog_owner_email, lastlog_owner_firstname, lastlog_owner_image, lastlog_owner_lastname, lastlog_owner_mobile, lastlog_owner_phone, lastlog_owner_sex, lastlog_vehicle_brand, lastlog_vehicle_color, lastlog_vehicle_image, lastlog_vehicle_model, lastlog_vehicle_plate_number, lastlog_vehicle_special_signs, lastlog_vehicle_year, latest_log_left_user_email, latest_log_left_user_id, latest_log_left_user_img, latest_log_left_user_mobile, latest_log_left_user_phone, latest_log_left_vehicle_img;
+    latest_log_left_vehicle_img = $("#latest_log_left_vehicle_img");
+    latest_log_left_user_img = $("#latest_log_left_user_img");
+    latest_log_left_user_id = $("#latest_log_left_user_id");
+    latest_log_left_user_phone = $("#latest_log_left_user_phone");
+    latest_log_left_user_mobile = $("#latest_log_left_user_mobile");
+    latest_log_left_user_email = $("#latest_log_left_user_email");
+    lastlog_id = $("#lastlog_id");
+    lastlog_location = $("#lastlog_location");
+    lastlog_ip_address = $("#lastlog_ip_address");
+    lastlog_mac_address = $("#lastlog_mac_address");
+    lastlog_date = $("#lastlog_date");
+    lastlog_hour = $("#lastlog_hour");
+    lastlog_owner_image = $("#lastlog_owner_image");
+    lastlog_owner_mobile = $("#lastlog_owner_mobile");
+    lastlog_owner_phone = $("#lastlog_owner_phone");
+    lastlog_owner_email = $("#lastlog_owner_email");
+    lastlog_owner_sex = $("#lastlog_owner_sex");
+    lastlog_owner_lastname = $("#lastlog_owner_lastname");
+    lastlog_owner_firstname = $("#lastlog_owner_firstname");
+    lastlog_cam_image = $("#lastlog_cam_image");
+    lastlog_vehicle_plate_number = $("#lastlog_vehicle_plate_number");
+    lastlog_vehicle_special_signs = $("#lastlog_vehicle_special_signs");
+    lastlog_vehicle_color = $("#lastlog_vehicle_color");
+    lastlog_vehicle_year = $("#lastlog_vehicle_year");
+    lastlog_vehicle_model = $("#lastlog_vehicle_model");
+    lastlog_vehicle_brand = $("#lastlog_vehicle_brand");
+    lastlog_vehicle_image = $("#lastlog_vehicle_image");
+    var json = '/logs/' + id + '.json';
+    $.ajax(json, {
+      type: 'GET',
+      dataType: 'json',
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log("AJAX Error: " + textStatus);
+      },
+      success: function(data, textStatus, jqXHR) {
+        lastlog_vehicle_brand.html(data.vehicle.brand.name);
+        lastlog_vehicle_model.html(data.vehicle.model.name);
+        lastlog_vehicle_year.html(data.vehicle.year);
+        lastlog_vehicle_color.html(data.vehicle.color);
+        lastlog_vehicle_special_signs.html(data.vehicle.special_signs);
+        lastlog_vehicle_plate_number.html(data.vehicle.plate_number);
+        lastlog_vehicle_image.attr("src", data.vehicle.photo);
+        lastlog_owner_image.attr("src", data.vehicle.owner.person.remote_photo);
+        lastlog_owner_firstname.html(data.vehicle.owner.person.first_name);
+        lastlog_owner_lastname.html(data.vehicle.owner.person.last_name);
+        lastlog_owner_sex.html(data.vehicle.owner.person.sex);
+        lastlog_owner_email.html(data.vehicle.owner.person.email);
+        lastlog_owner_phone.html(data.vehicle.owner.person.phone);
+        lastlog_owner_mobile.html(data.vehicle.owner.person.mobile);
+        latest_log_left_vehicle_img.attr("src", data.vehicle.photo);
+        latest_log_left_user_img.attr("src", data.vehicle.owner.person.remote_photo);
+        latest_log_left_user_id.html('<i class="fa fa-credit-card"></i>' + data.vehicle.owner.person.identification_card);
+        latest_log_left_user_phone.html('<i class="fa fa-phone"></i>' + data.vehicle.owner.person.phone);
+        latest_log_left_user_mobile.html('<i class="fa fa-mobile-phone"></i>' + data.vehicle.owner.person.mobile);
+        latest_log_left_user_email.html('<i class="fa fa-envelope"></i>' + data.vehicle.owner.person.email);
+        latest_log_left_user_phone.attr('href',"tel:"+data.vehicle.owner.person.phone);
+        latest_log_left_user_phone.attr('href',"tel:"+data.vehicle.owner.person.mobile);
+        latest_log_left_user_phone.attr('href',"mailto:"+data.vehicle.owner.person.email);
+        lastlog_cam_image.attr("src", data.log.cam_location_photo);
+        lastlog_id.html(data.log.cam_location.id);
+        lastlog_location.html(data.log.cam_location.location);
+        lastlog_ip_address.html(data.log.cam_location.ip_addres);
+        lastlog_mac_address.html(data.log.cam_location.mac_address);
+        lastlog_date.html(data.log.date);
+        lastlog_hour.html(data.log.hour);
+        $("#latestLogModal").modal('show');
+      }
+    });
+  }
+</script>

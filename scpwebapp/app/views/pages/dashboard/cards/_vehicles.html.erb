@@ -1,0 +1,26 @@
+<div class="col-md-3 col-vlg-3 col-sm-6">
+    <div class="tiles red added-margin  m-b-20">
+        <div class="tiles-body">
+            <div class="controller">
+                <a href="javascript:;" class="reload"></a>
+                <a href="javascript:;" class="remove"></a>
+            </div>
+          <div class="tiles-title"><%= t("vehicles").upcase %></div>
+            <div class="widget-stats">
+                <div class="wrapper transparent">
+                    <span class="item-title"><%= t "layout.dashboard.overall" %></span>  <span class="item-count animate-number semi-bold" data-value="<%= @vehicles_data['count'] %>" data-animation-duration="700">0</span>
+                </div>
+            </div>
+            <div class="widget-stats">
+                <div class="wrapper transparent">
+                    <span class="item-title"><%= t "layout.dashboard.this_month" %></span>  <span class="item-count animate-number semi-bold" data-value="<%= @vehicles_data['current_month_value'] %>" data-animation-duration="700">0</span>
+                </div>
+            </div>
+            <div class="progress transparent progress-small no-radius m-t-20">
+                <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="<%= @vehicles_data['percentage'] %>%" style="width: 0%;"></div>
+            </div>
+            <div class="description"><i class="icon-custom-<%= @vehicles_data['percentage_icon'] %>"></i><span class="text-white mini-description ">&nbsp; <strong><%= @vehicles_data['percentage'] %>% <%= @vehicles_data['percentage_span'] %></strong> <%= t "layout.dashboard.than_last_month" %></span>
+            </div>
+        </div>
+    </div>
+</div>

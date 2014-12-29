@@ -1,0 +1,138 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+es:
+  language:
+    language: "Idioma"
+    spanish: "Español"
+    english: "Inglés"
+  
+  helpers:
+    actions: "Acciones"
+    links:
+      back: "Atrás"
+      cancel: "Cancel"
+      confirm: "¿Estás seguro/a?"
+      destroy: "Eliminar"
+      new: "Nuevo"
+      edit: "Editar"
+      register_vehicle: "Registrar vehículo"
+    titles:
+      edit: "Editar %{model}"
+      save: "Salvar %{model}"
+      new: "Nuevo %{model}"
+      delete: "Eliminar %{model}"
+     
+
+  accounts: "Cuentas"
+  brands: "Marcas"
+  models: "Modelos"
+  clients: "Clientes"
+  cam_locations: "Ubicación Cámaras"
+  users: "Usuarios"
+  visitors: "Visitantes"
+  people: "Perfiles"
+  roles: "Roles"
+  vehicles: "Vehículos"
+  listings: "Listado de"
+  listing: "Listado de"
+  notifications: "Notificaciones"
+  logs: "Registros"
+  log: "Registro"
+  
+  client: "Cliente"
+  vehicle: "Vehículo"
+  form:
+    errors:
+      change: "Por favor cambia algunas cosas"
+      try: "y trata de enviar nuevamente"
+      found: "Hemos encontrado"
+    buttons:
+      save: "Salvar"
+      cancel: "Cancelar"
+      continue: "Continuar"
+    titles:
+      details: "<span class='semi-bold'>Detalles</span>"
+      personal_settings: "Ajustes <strong>Personales</strong>"
+      personal_settings_tab: "Ajustes Personales"
+      client_personal_settings: "Datos personales de Cliente"
+      user_personal_settings: "Datos personales de Usuario"
+      user_account: "Cuenta de Usuario"
+      select_by_identification_card: "Selecciona la Persona por su Cédula"
+      sure: "¿Estás seguro?"
+    messages:
+      successfully_created: "fue creado satisfactoriamente."
+      
+      
+  layout:
+    titles:
+      edit: "Editar"
+      new: "Nuevo"
+      show: "Mostrar"
+      delete: "Eliminar"
+      list: "Catálogo"
+      show_all: "Mostrar Todos"
+      statistics: "Estadísticas"
+      upgrade: "Potenciar"
+    dashboard:
+      than_last_month: "que el mes anterior"
+      this_month: "Este Mes"
+      overall: "Total"
+      higher: "mayor"
+      lower: "menor"
+      monthly: "Mensuales"
+      relation: "Relación"
+    account:
+      account: "Cuenta"
+      user: "Usuario"
+      setting: "Ajuste"
+      settings: "Ajustes"
+      app: "Aplicación"
+      this_is_you: "Este eres tú"
+      personal: "Personales"
+      my_account: "Mi Cuenta"
+      logout: "Salir de Sesión"
+    buttons:
+      create: "Crear"
+      
+      
+    
+  properties:
+    status: "Estado"
+    name: "Nombre"
+    email: "Correo"
+    username: "Nombre de Usuario"
+    password: "Contraseña"
+    user: "Usuario"
+    brand: "Marca"
+    model: "Modelo"
+    plate: "Placa"
+    identification_card: "Cédula"
+    owner: "Dueño"
+    year: "Año"
+    color: "Color"
+    special_signs: "Señales Particulares"
+    location: "Ubicación"
+    ip_address: "Dirección IP"
+    mac_address: "Dirección MAC"
+    first_name: "Nombre"
+    last_name: "Apellido"
+    sex: "Sexo"
+    male: "Masculino"
+    female: "Femenino"
+    phone: "Teléfono"
+    mobile: "Celular"
+    value: "Valor"
+    search: "Buscar"
+    browse: "Navegar"
+    time: "Tiempo"
+    created_at: "Creado en"
+    updated_at: "Actualizado en"
+    role: "Rol"
+    hour: "Hora"
+    date: "Fecha"
+    call: "LLamar"
+    send_message: "Enviar Mensaje"
+    notes: "Notas"
+    expiringtime: "Tiempo Expiración"
+      

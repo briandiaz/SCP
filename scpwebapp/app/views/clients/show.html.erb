@@ -1,0 +1,92 @@
+<% title t "clients" %>
+<% icon_title "users" %>
+<% sub_title "# " + @client.id.to_s %>
+<% go_back_link clients_path %>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 "> 
+    <div class="grid simple ">
+      <div class="grid-title">
+        <%= link_to edit_client_path(@client), :class => 'btn btn-warning'  do %>
+        <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+        <% end %>
+
+        <%= link_to new_client_vehicle_path(@client), :class=> "btn btn-info" do %>
+        <i class="fa fa-car"></i> <%= t("helpers.links.register_vehicle") %>
+        <% end %>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <div class="row">
+          <div class="col-sm-4 col-md-4">
+            <img class="img-responsive" src="<%= @client.person.remote_photo if @client.person.remote_photo %>" alt="<%= profile_name(@client.person) %>">
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <dl class="dl-horizontal">
+              <dt><strong><%= t"properties.first_name" %>:</strong></dt>
+              <dd><%= @client.person.first_name %></dd>
+              <dt><strong><%= t"properties.last_name" %>:</strong></dt>
+              <dd><%= @client.person.last_name %></dd>
+              <dt><strong><%= t"properties.sex" %>:</strong></dt>
+              <dd><%= @client.person.sex %></dd>
+              <dt><strong><%= t"properties.email" %>:</strong></dt>
+              <dd><%= @client.person.email %></dd>
+              <dt><strong><%= t"properties.phone" %>:</strong></dt>
+              <dd><%= @client.person.phone %></dd>
+              <dt><strong><%= t"properties.mobile" %>:</strong></dt>
+              <dd><%= @client.person.mobile %></dd>
+            </dl>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            
+          <%= button_to @client, :method=>:delete, :class => 'btn btn-danger pull-right', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) } do %>
+          <%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy"))%>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div> 
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 ">
+    <h1><%= t"vehicles" %></h1>
+    <% @vehicles.each do |vehicle| %>
+    <div class="col-sm-6 col-md-6">
+      <div class="thumbnail" >
+        <img src="<%= get_vehicle_image(vehicle) %>" class="img-responsive">
+        <div class="caption">
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+              <h3><%= vehicle.brand.name %> <%= vehicle.model.name %></h3>
+            </div>
+            <div class="col-md-6 col-xs-6">
+              <h3><%= "(#{vehicle.year})" %></h3>
+            </div>
+          </div>
+          <p><label><span class="glyphicon glyphicon-tint"></span> <%= vehicle.color || "No Color" %></label> <label><span class="glyphicon glyphicon-list"></span> <%= vehicle.special_signs || "No #{t("properties.special_signs")}"  %></label></p>
+          <div class="row">
+            <div class="col-md-6 pull-right">
+              <%= link_to vehicle, :class=>"btn btn-primary btn-product", "style" => "width:100%" do %>
+              <span class="fa fa-car"></span> <%= t"layout.titles.show" %>
+              <% end %>
+            </div>
+          </div>
+
+          <p> </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </div> 
+
+</div>

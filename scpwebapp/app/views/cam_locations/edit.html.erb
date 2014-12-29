@@ -1,0 +1,10 @@
+<% title t "cam_locations" %>
+<% icon_title "video-camera" %>
+<% sub_title "#{t "layout.titles.edit"} # #{@cam_location.id.to_s}" %>
+<% go_back_link cam_locations_path %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'form' %>
+  </div>
+</div>

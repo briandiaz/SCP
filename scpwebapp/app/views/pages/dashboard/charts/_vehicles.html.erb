@@ -1,0 +1,28 @@
+<div class="col-md-4">
+  <div class="grid simple">
+    <div class="grid-title no-border">
+      <h4><%= t "vehicle" %>-<%= t "client" %> <span class="semi-bold"><%= t "layout.dashboard.relation" %></span></h4>
+      <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+    </div>
+    <div class="grid-body">
+      <div id="vehicles-chart" style="height:250px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function run_vehicles_chart(){
+    Morris.Donut({
+      element: 'vehicles-chart',
+      data: [{
+        label: "Vehicles",
+        value: <%= @vehicles_data["count"] %>
+      }, {
+        label: "Clients",
+        value: <%= @clients_data["count"] %>
+      }
+            ],
+      colors: ['#2b5797', '#2d89ef']
+    });
+  }
+</script>

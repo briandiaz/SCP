@@ -1,0 +1,27 @@
+
+<div class="page-header">
+    <h1><%= t "logs" %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= t "properties.time" %>:</strong></dt>
+  <dd><%= @log.time %></dd>
+  <dt><strong><%= t "cam_locations" %>:</strong></dt>
+  <dd><%= @log.cam_location.location || "NULL" %></dd>
+  <dt><strong><%= t "vehicles" %></strong></dt>
+  <dd><%= @log.vehicle.plate_number %></dd>
+</dl>
+<div class="btn-group">
+<%= link_to logs_path, :class => 'btn btn-info'  do %>
+  <%= glyph(:chevron_left) %> <%= t('.back', :default => t("helpers.links.back")) %>
+<% end %>
+<%= link_to edit_log_path(@log), :class => 'btn btn-warning'  do %>
+<%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+<% end %>
+<%= link_to log_path(@log),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger' do %>
+<%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+<% end %>
+</div>

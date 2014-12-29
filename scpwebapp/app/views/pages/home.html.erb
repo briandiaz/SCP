@@ -1,0 +1,65 @@
+<% title "Dashboard" %>
+<% icon_title "tachometer" %>
+<% sub_title t "layout.titles.statistics" %>
+
+<!-- cards -->
+<div class="row cards">
+  <%= render "pages/dashboard/cards/clients" %>  
+  <%= render "pages/dashboard/cards/vehicles" %>  
+  <%= render "pages/dashboard/cards/users" %>  
+  <%= render "pages/dashboard/cards/logs" %>  
+</div>
+<!-- /cards -->
+
+<!-- charts -->
+<div class="row">
+  <%= render "pages/dashboard/charts/logs" %> 
+  <%= render "pages/dashboard/charts/vehicles" %>
+</div>
+<!-- /charts -->
+
+<!-- tables -->
+<div class="row">
+  <%= render "pages/dashboard/tables/logs", :locals => {@latest_logs => @latest_logs} %>
+</div>
+<!-- /tables -->
+
+<!-- modal  -->
+<%= render "pages/logdetails/logdetails_modal" %>
+<!-- /modal -->
+
+<script>
+  function get_latest_logs(){
+    var table = $("#table_latest_logs");
+    var logs = "";
+    $.ajax({
+      type: "GET",
+      url: '/api/latest_logs.json',
+      dataType: "json",
+      statusCode: {
+        200: function(data) {
+          $.each(data,function(index,value){
+            logs += "<tr>";
+            logs += "<td>"+value.log.id+"</td>";
+            logs += "<td>"+value.log.owner+"</td>";
+            logs += "<td>"+value.log.vehicle+"</td>";
+            logs += "<td>"+value.log.plate+"</td>";
+            logs += "<td>"+value.log.cam_location+"</td>";
+            logs += "<td>"+value.log.date+"</td>";
+            logs += "<td>"+value.log.hour+"</td>";
+            logs += "</tr>";
+          });
+          table.html(logs);
+        },
+        500: function(xhr, textStatus, errorThrown) {
+        },
+        402: function(xhr, textStatus, errorThrown) {
+        },
+        400: function(xhr, textStatus, errorThrown) {
+        },
+        406: function(xhr, textStatus, errorThrown) {
+        }
+      }
+    });
+  }
+</script>

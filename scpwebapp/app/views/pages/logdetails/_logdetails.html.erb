@@ -1,0 +1,252 @@
+
+<div class="col-md-4">
+  <div class=" tiles white col-md-12 no-padding">
+    <div class="tiles white cover-pic-wrapper"> 
+      <img src="<%= @vehicle_image %>" class="img-responsive" alt="">
+    </div>
+    <div class="tiles white">
+
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <div class="user-profile-pic">  
+            <img width="69" height="69" data-src-retina="http://boxrails-77466.sae1.nitrousbox.com/uploads/person/photo/4/medium_2363531.png" data-src="http://boxrails-77466.sae1.nitrousbox.com/uploads/person/photo/4/medium_2363531.png" src="http://boxrails-77466.sae1.nitrousbox.com/uploads/person/photo/4/medium_2363531.png" alt="">
+          </div>
+        </div>
+        <div class="col-md-7 user-description-box  col-sm-7">
+          <h4 class="semi-bold no-margin" ><%= profile_name(@log.vehicle.owner.person) %></h4>
+          <h6 class="no-margin"><%= @log.vehicle.owner.person.sex %></h6>
+          <br>
+          <p><a href="#" title="Identification Card"><i class="fa fa-credit-card"></i><%= @log.vehicle.owner.person.identification_card %></a></p>
+          <p><a href="tel:<%= @log.vehicle.owner.person.phone %>" title="Call Phone"><i class="fa fa-phone"></i><%= @log.vehicle.owner.person.phone %></a></p>
+          <p><a href="tel:<%= @log.vehicle.owner.person.mobile %>" title="Call Mobile"><i class="fa fa-mobile-phone"></i><%= @log.vehicle.owner.person.mobile %></a></p>
+          <p><a href="mailto:<%= @log.vehicle.owner.person.email %>" title="Send Message"><i class="fa fa-envelope"></i><%= @log.vehicle.owner.person.email %></a></p>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>  
+</div>
+
+<div class="col-md-8">
+  <div class="col-sm-12">
+    <section class="tile left-nav transparent">
+      <!-- tile left-side -->
+      <div class="tile-left-side nopadding color transparent-black rounded-left-corners">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs tabs-left">
+          <li class="active"><a href="#tab1" data-toggle="tab"><%= t"vehicle" %></a></li>
+          <li><a href="#tab2" data-toggle="tab"><%= t"client" %></a></li>
+          <li><a href="#tab3" data-toggle="tab"><%= t"log" %></a></li>
+        </ul>
+        <!-- / Nav tabs -->
+      </div>
+      <!-- /tile left-side -->
+
+
+      <!-- tile body -->
+
+      <div class="tile-body rounded-right-corners">
+        <div class="tab-content">
+          <div class="tab-pane active transparent-black" id="tab1">
+            <div class="grid simple ">
+              <div class="grid-title">
+                <%= link_to edit_vehicle_path(@log.vehicle), :class => 'btn btn-warning'  do %>
+                <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+                <% end %>
+                <div class="tools">
+                  <a href="javascript:;" class="collapse"></a>
+                  <a href="javascript:;" class="reload"></a>
+                </div>
+              </div>
+              <div class="grid-body ">
+                <div class="row">
+                  <div class="col-sm-6 col-md-6">
+                    <img src="<%= @vehicle_image %>" class="img-responsive" id="lastlog_vehicle_image">
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                    <dl class="dl-horizontal">
+                      <dt><strong>Brand:</strong></dt>
+                      <dd id="lastlog_vehicle_brand"><%= @log.vehicle.brand.name %></dd>
+                      <dt><strong>Model:</strong></dt>
+                      <dd id="lastlog_vehicle_model"><%= @log.vehicle.model.name %></dd>
+                      <dt><strong>Year:</strong></dt>
+                      <dd id="lastlog_vehicle_year"><%= @log.vehicle.year %></dd>
+                      <dt><strong>Color:</strong></dt>
+                      <dd id="lastlog_vehicle_color"><%= @log.vehicle.color %></dd>
+                      <dt><strong>Special signs:</strong></dt>
+                      <dd id="lastlog_vehicle_special_signs"><%= @log.vehicle.special_signs %></dd>
+                      <dt><strong>Plate number:</strong></dt>
+                      <dd id="lastlog_vehicle_plate_number"><%= @log.vehicle.plate_number %></dd>
+                    </dl>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane" id="tab2">
+
+            <div class="grid simple ">
+              <div class="grid-title">
+                <%= link_to edit_client_path(@log.vehicle.owner.person.client), :class => 'btn btn-warning'  do %>
+                <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+                <% end %>
+                <div class="tools">
+                  <a href="javascript:;" class="collapse"></a>
+                  <a href="javascript:;" class="reload"></a>
+                </div>
+              </div>
+              <div class="grid-body ">
+                <div class="row">
+                  <div class="col-sm-4 col-md-4">
+
+                  </div>
+                  <div class="col-sm-8 col-md-8">
+                    <dl class="dl-horizontal">
+                      <dt><strong>First Name:</strong></dt>
+                      <dd id="lastlog_owner_firstname"><%= @log.vehicle.owner.person.first_name %></dd>
+                      <dt><strong>Last Name:</strong></dt>
+                      <dd id="lastlog_owner_lastname"><%= @log.vehicle.owner.person.last_name %></dd>
+                      <dt><strong>Sex:</strong></dt>
+                      <dd id="lastlog_owner_sex"><%= @log.vehicle.owner.person.sex %></dd>
+                      <dt><strong>Email:</strong></dt>
+                      <dd id="lastlog_owner_email"><%= @log.vehicle.owner.person.email %></dd>
+                      <dt><strong>Phone:</strong></dt>
+                      <dd id="lastlog_owner_phone"><%= @log.vehicle.owner.person.phone %></dd>
+                      <dt><strong>Mobile:</strong></dt>
+                      <dd id="lastlog_owner_mobile"><%= @log.vehicle.owner.person.mobile %></dd>
+                    </dl>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="tab3">
+
+            <div class="grid simple ">
+              <div class="grid-title">
+                <div class="tools">
+                  <a href="javascript:;" class="collapse"></a>
+                  <a href="javascript:;" class="reload"></a>
+                </div>
+              </div>
+              <div class="grid-body ">
+                <div class="row">
+                  <div class="col-sm-4 col-md-4">
+
+                  </div>
+                  <div class="col-sm-8 col-md-8">
+                    <dl class="dl-horizontal">
+                      <dt><strong>ID:</strong></dt>
+                      <dd id="lastlog_id"><%= @log.id %></dd>
+                      <dt><strong>Location:</strong></dt>
+                      <dd id="lastlog_location"><%= @log.cam_location.location %></dd>
+                      <dt><strong>IP Address:</strong></dt>
+                      <dd id="lastlog_ip_address"><%= @log.cam_location.ip_addres %></dd>
+                      <dt><strong>Mac Address:</strong></dt>
+                      <dd id="lastlog_mac_address"><%= @log.cam_location.mac_address %></dd>
+                      <dt><strong>Date:</strong></dt>
+                      <dd id="lastlog_date"><%= @log.time.strftime("%d/%m/%Y") %></dd>
+                      <dt><strong>Time:</strong></dt>
+                      <dd id="lastlog_hour"><%= @log.time.strftime("%I:%M:%S %p") %></dd>
+                      <dt style="display:none"><strong>Timestamp:</strong></dt>
+                      <dd style="display:none" id="lastlog_timestamp"><%= @log.time.strftime("%d/%m/%Y %I:%M:%S.%L %p") %></dd>
+                    </dl>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- /tile body -->
+    </section>
+  </div>
+</div>
+
+
+<script>
+  function get_last_log(){
+    var current_log_timestamp =  $("#lastlog_timestamp").html();
+    var current_log_plate = $("#lastlog_vehicle_plate_number").html();
+    var current_log_date = $("#lastlog_date").html();
+
+    var lastlog_id = $("#lastlog_id");
+    var lastlog_location = $("#lastlog_location");
+    var lastlog_ip_address = $("#lastlog_ip_address");
+    var lastlog_mac_address = $("#lastlog_mac_address");
+    var lastlog_date = $("#lastlog_date");
+    var lastlog_hour = $("#lastlog_hour");
+
+    var lastlog_owner_mobile = $("#lastlog_owner_mobile");
+    var lastlog_owner_phone = $("#lastlog_owner_phone");
+    var lastlog_owner_email = $("#lastlog_owner_email");
+    var lastlog_owner_sex = $("#lastlog_owner_sex");
+    var lastlog_owner_lastname = $("#lastlog_owner_lastname");
+    var lastlog_owner_firstname = $("#lastlog_owner_firstname");
+
+    var lastlog_vehicle_plate_number = $("#lastlog_vehicle_plate_number");
+    var lastlog_vehicle_special_signs = $("#lastlog_vehicle_special_signs");
+    var lastlog_vehicle_color = $("#lastlog_vehicle_color");
+    var lastlog_vehicle_year = $("#lastlog_vehicle_year");
+    var lastlog_vehicle_model = $("#lastlog_vehicle_model");
+    var lastlog_vehicle_brand = $("#lastlog_vehicle_brand");
+    var lastlog_vehicle_image = $("#lastlog_vehicle_image");
+    
+    var table = $("#table_latest_logs");
+    var new_log = "";
+    $.ajax({
+      type: "GET",
+      url: '/livelog.json',
+      dataType: "json",
+      async: false,
+      statusCode: {
+        200: function(data) {
+          if(current_log_timestamp != data.log.timestamp && current_log_plate != data.vehicle.plate_number){
+            lastlog_vehicle_brand.html(data.vehicle.brand.name);
+            lastlog_vehicle_model.html(data.vehicle.model.name);
+            lastlog_vehicle_year.html(data.vehicle.year);
+            lastlog_vehicle_color.html(data.vehicle.color);
+            lastlog_vehicle_special_signs.html(data.vehicle.special_signs);
+            lastlog_vehicle_plate_number.html(data.vehicle.plate_number);
+            lastlog_vehicle_image.attr("src",data.vehicle.photo);
+            lastlog_owner_firstname.html(data.vehicle.owner.person.first_name);
+            lastlog_owner_lastname.html(data.vehicle.owner.person.last_name);
+            lastlog_owner_sex.html(data.vehicle.owner.person.sex);
+            lastlog_owner_email.html(data.vehicle.owner.person.email);
+            lastlog_owner_phone.html(data.vehicle.owner.person.phone);
+            lastlog_owner_mobile.html(data.vehicle.owner.person.mobile);
+            new_log = "<tr  class=\" animated bounceIn\">";
+            new_log += "<td>"+data.log.id+"</td>";
+            new_log += "<td>"+data.vehicle.owner.person.first_name+" "+data.vehicle.owner.person.last_name+"</td>";
+            new_log += "<td>"+data.vehicle.brand.name+" - "+data.vehicle.model.name+" "+data.vehicle.year+"</td>";
+            new_log += "<td>"+data.vehicle.plate_number+"</td>";
+            new_log += "<td>"+data.log.cam_location.location+"</td>";
+            new_log += "<td>"+data.log.date+"</td>";
+            new_log += "<td>"+data.log.hour+"</td>";
+            new_log += "</tr>";
+            table.prepend(new_log);
+          }
+        },
+        500: function(xhr, textStatus, errorThrown) {
+        },
+        402: function(xhr, textStatus, errorThrown) {
+        },
+        400: function(xhr, textStatus, errorThrown) {
+        },
+        406: function(xhr, textStatus, errorThrown) {
+        }
+      }
+    });
+  }
+</script>

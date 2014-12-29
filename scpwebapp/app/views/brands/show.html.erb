@@ -1,0 +1,37 @@
+<% title t "brands" %>
+<% icon_title "briefcase" %>
+<% sub_title "# " + @brand.id.to_s %>
+<% go_back_link brands_path %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 ">	
+    <div class="grid simple ">
+      <div class="grid-title">
+        <%= link_to edit_brand_path(@brand), :class => 'btn btn-warning'  do %>
+            <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+            <% end %>
+            <%= link_to brand_path(@brand),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger' do %>
+            <%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+            <% end %>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <img src="<%= @brand_image %>" data-src="<%= @brand_image %>" data-src-retina="<%= @brand_image %>" alt="" class="img-thumbnail"> 
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <h3><%= @brand.name %></h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> 
+</div> 

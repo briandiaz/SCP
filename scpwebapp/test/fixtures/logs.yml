@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2014-06-27 17:16:54
+  cam_location_id: 
+  vehicle_id: 
+
+two:
+  time: 2014-06-27 17:16:54
+  cam_location_id: 
+  vehicle_id: 

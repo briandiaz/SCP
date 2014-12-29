@@ -1,0 +1,32 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: d6atsjf7mnaeok
+  pool: 5
+  username: mtbnwpwrefbaoh
+  password: S3OOmEGAjA4p5ApEhY-BpuueaG
+  host: ec2-54-225-101-164.compute-1.amazonaws.com
+  port: 5432
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: d6atsjf7mnaeok
+  pool: 5
+  username: mtbnwpwrefbaoh
+  password: S3OOmEGAjA4p5ApEhY-BpuueaG
+  host: ec2-54-225-101-164.compute-1.amazonaws.com
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: d6atsjf7mnaeok
+  pool: 5
+  username: mtbnwpwrefbaoh
+  password: S3OOmEGAjA4p5ApEhY-BpuueaG
+  host: ec2-54-225-101-164.compute-1.amazonaws.com
+  port: 5432
+
+cucumber:
+  <<: *test

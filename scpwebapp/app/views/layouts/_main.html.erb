@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <title>SCP Web APP <% if content_for :title %>- <% end %><%= yield(:title) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <%= csrf_meta_tags %>
+    <!-- Bootstrap -->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <link href="http://scpcdn.cf/web/assets/plugins/jquery-polymaps/style.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="http://scpcdn.cf/web/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://scpcdn.cf/web/assets/plugins/shape-hover/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="http://scpcdn.cf/web/assets/plugins/shape-hover/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="http://scpcdn.cf/web/assets/plugins/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="http://scpcdn.cf/web/assets/plugins/owl-carousel/owl.theme.css" />
+    <link href="http://scpcdn.cf/web/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <link href="http://scpcdn.cf/web/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
+    <link href="http://scpcdn.cf/web/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+    <link href="http://scpcdn.cf/web/assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="http://scpcdn.cf/web/assets/plugins/jquery-slider/css/jquery.sidr.light.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="http://scpcdn.cf/web/assets/plugins/jquery-ricksaw-chart/css/rickshaw.css" type="text/css" media="screen" >
+    <link href="http://scpcdn.cf/web/assets/plugins/jquery-isotope/isotope.css" rel="stylesheet" type="text/css"/>
+    <link href="http://scpcdn.cf/web/assets/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+    <link href="http://scpcdn.cf/web/assets/plugins/boostrap-checkbox/css/bootstrap-checkbox.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="http://scpcdn.cf/web/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="http://scpcdn.cf/jasny-bootstrap/css/jasny-bootstrap.min.css">
+
+    <!-- BEGIN CORE CSS FRAMEWORK -->
+    <link href="http://scpcdn.cf/web/assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- END CORE CSS FRAMEWORK -->
+    <!-- BEGIN CSS TEMPLATE -->
+    <link href="http://scpcdn.cf/web/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="http://scpcdn.cf/web/assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="http://scpcdn.cf/web/assets/css/magic_space.css" rel="stylesheet" type="text/css"/>
+    <link href="http://scpcdn.cf/web/assets/css/tiles_responsive.css" rel="stylesheet" type="text/css"/>
+    <!-- END CSS TEMPLATE -->
+  </head>
+  <!-- END HEAD -->
+
+  <!-- BEGIN BODY -->
+  <body class="">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse "> 
+      <!-- BEGIN TOP NAVIGATION BAR -->
+      <div class="navbar-inner">
+        <div class="header-seperation"> 
+          <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">  
+            <li class="dropdown"> <a id="main-menu-toggle" href="#main-menu"  class="" > <div class="iconset top-menu-toggle-white"></div> </a> </li>     
+          </ul>
+          <!-- BEGIN LOGO --> 
+          <a href="<%= root_path %>"><img src="http://scpcdn.cf/web/assets/img/scp-logo.png" class="logo" alt=""  data-src="http://scpcdn.cf/web/assets/img/scp-logo.png" data-src-retina="http://scpcdn.cf/web/assets/img/scp-logo.png" width="106" height="21"/></a>
+          <!-- END LOGO --> 
+          <ul class="nav pull-right notifcation-center">  
+            <li class="dropdown" id="header_task_bar"> <a href="<%= root_path %>" class="dropdown-toggle active" data-toggle=""> <div class="iconset top-home"></div> </a> </li>
+            <li class="dropdown" id="portrait-chat-toggler" style="display:none"> <a href="#sidr" class="chat-menu-toggle"> <div class="iconset top-chat-white "></div> </a> </li>        
+          </ul>
+        </div>
+        <!-- END RESPONSIVE MENU TOGGLER --> 
+        <div class="header-quick-nav" > 
+          <!-- BEGIN TOP NAVIGATION MENU -->
+          <div class="pull-left"> 
+            <ul class="nav quick-section">
+              <li class="quicklinks"> <a href="#" class="" id="layout-condensed-toggle" >
+                <div class="iconset top-menu-toggle-dark"></div>
+                </a> </li>
+            </ul>
+            <ul class="nav quick-section">
+              <li class="quicklinks"> <a href="#" class="" >
+                <div class="iconset top-reload"></div>
+                </a> </li>
+              <li class="quicklinks">
+                <%= link_to_unless I18n.locale == :en, image_tag("http://png-1.findicons.com/files/icons/282/flags/24/united_states_of_america_usa.png"), language_english_path %>
+              </li>
+              <li class="quicklinks"> <span class="h-seperate"></span></li>
+              <li class="quicklinks">
+                <%= link_to_unless I18n.locale == :es, image_tag("http://png-1.findicons.com/files/icons/282/flags/24/spain.png"), language_spanish_path %>
+              </li>
+              <li class="quicklinks"> <span class="h-seperate"></span></li>
+              
+            </ul>
+          </div>
+          <!-- END TOP NAVIGATION MENU -->
+          <!-- BEGIN CHAT TOGGLER -->
+          <div class="pull-right"> 
+            <div class="chat-toggler">  
+              <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom"  data-content='' data-toggle="dropdown" data-original-title="Notifications">
+                <div class="user-details"> 
+                  <div class="username">
+                    <span class="badge badge-important">3</span> 
+                    <%= profile_name_current_user %>         
+                  </div>            
+                </div> 
+                <div class="iconset top-down-arrow"></div>
+              </a>  
+              <div id="notification-list" style="display:none">
+                <div style="width:300px">
+                  <div class="notification-messages info">
+                    <div class="user-profile">
+                      <img src="http://scpcdn.cf/web/assets/img/profiles/d.jpg"  alt="" data-src="http://scpcdn.cf/web/assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                    </div>
+                    <div class="message-wrapper">
+                      <div class="heading">
+                        David Nester - Commented on your wall
+                      </div>
+                      <div class="description">
+                        Meeting postponed to tomorrow
+                      </div>
+                      <div class="date pull-left">
+                        A min ago
+                      </div>                    
+                    </div>
+                    <div class="clearfix"></div>                  
+                  </div>  
+                  <div class="notification-messages danger">
+                    <div class="iconholder">
+                      <i class="icon-warning-sign"></i>
+                    </div>
+                    <div class="message-wrapper">
+                      <div class="heading">
+                        Server load limited
+                      </div>
+                      <div class="description">
+                        Database server has reached its daily capicity
+                      </div>
+                      <div class="date pull-left">
+                        2 mins ago
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>  
+                  <div class="notification-messages success">
+                    <div class="user-profile">
+                      <img src="http://scpcdn.cf/web/assets/img/profiles/h.jpg"  alt="" data-src="http://scpcdn.cf/web/assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
+                    </div>
+                    <div class="message-wrapper">
+                      <div class="heading">
+                        You haveve got 150 messages
+                      </div>
+                      <div class="description">
+                        150 newly unread messages in your inbox
+                      </div>
+                      <div class="date pull-left">
+                        An hour ago
+                      </div>                  
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>              
+                </div>        
+              </div>
+              <div class="profile-pic"> 
+                <%= profile_pic(35,35) %>
+              </div>            
+            </div>
+            <ul class="nav quick-section ">
+              <li class="quicklinks"> 
+                <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">            
+                  <div class="iconset top-settings-dark "></div>  
+                </a>
+                <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                  <li><%= link_to account_path do %><%= t"layout.account.my_account" %>&nbsp;&nbsp;<i class="fa fa-user animated bounceIn"></i><% end %>
+                  </li>
+                  <li class="divider"></li>                
+                  <li><%= link_to logout_path do %><i class="fa fa-power-off animated bounceIn"></i> <%= t"layout.account.logout" %><% end %></li>
+                </ul>
+              </li> 
+            </ul>
+          </div>
+          <!-- END CHAT TOGGLER -->
+        </div> 
+        <!-- END TOP NAVIGATION MENU --> 
+
+      </div>
+      <!-- END TOP NAVIGATION BAR --> 
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+      <!-- BEGIN SIDEBAR -->
+      <div class="page-sidebar" id="main-menu"> 
+        <!-- BEGIN MINI-PROFILE -->
+        <div class="page-sidebar-wrapper" id="main-menu-wrapper"> 
+          <div class="user-info-wrapper">  
+            <div class="profile-wrapper">
+              <%= profile_pic(69,69) %>
+            </div>
+            <div class="user-info">
+              <div class="greeting">Welcome</div>
+              <div class="username"><%= profile_name_current_user %></div>
+              <div class="status"><%= t "properties.status" %><a href="#"><div class="status-icon green"></div>Online</a></div>
+            </div>
+          </div>
+          <!-- END MINI-PROFILE -->
+
+          <!-- BEGIN SIDEBAR MENU -->  
+          <p class="menu-title"><%= t "properties.browse" %> <span class="pull-right"><a href="javascript:;"><i class="fa fa-refresh"></i></a></span>
+          </p>
+          <ul>
+            <li class="start <%= is_page_active('pages') %>" data-toggle="tooltip" data-placement="right" title="Tooltip on right" title="Dashboard">
+              <%= link_to root_path do %>
+              <i class="icon-custom-home"></i>  <span class="title">Dashboard</span>  <span class="selected"></span>
+              <% end %>
+            </li>
+            <li class="<%= is_page_active('people') %> <%= is_page_active('roles') %> <%= is_page_active('clients') %>" data-toggle="tooltip" data-placement="right" title="Tooltip on right" title="<%= t 'accounts' %>">
+              <a href="javascript:;"> <i class="fa fa-cogs"></i> <span class="title"> <%= t "accounts" %></span>  <span class="arrow "></span> 
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-user"></i>  <span class="title"><%= t "users" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to people_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_person_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-users"></i> <span class="title"> <%= t "clients" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to clients_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to newclientperson_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_client_path do %><i class="glyphicon glyphicon-floppy-save"></i> <%= t "layout.titles.upgrade" %> <%= t"properties.user" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-eye"></i>  <span class="title"><%= t "roles" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to roles_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_role_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= is_page_active('vehicles') %> <%= is_page_active('brands') %> <%= is_page_active('models') %>">
+              <a href="javascript:;"> <i class="fa fa-car"></i> <span class="title"> <%= t "vehicles" %></span>  <span class="arrow "></span> 
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-briefcase"></i> <span class="title"><%= t "brands" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to brands_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_brand_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-archive"></i> <span class="title"> <%= t "models" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to models_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_model_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;"> <i class="fa fa-car"></i> <span class="title"><%= t "vehicles" %></span>  <span class="arrow "></span> 
+                  </a>
+                  <ul class="sub-menu">
+                    <li> 
+                      <%= link_to vehicles_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_vehicle_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= is_page_active('cam_locations') %>">
+              <a href="javascript:;"><i class="fa fa-video-camera"></i> <span class="title"><%= t "cam_locations" %></span>  <span class="arrow "></span> 
+              </a>
+              <ul class="sub-menu">
+                <li> 
+                  <%= link_to cam_locations_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                </li>
+                <li>
+                  <%= link_to new_cam_location_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= is_page_active('visitors') %>">
+              <a href="javascript:;"><i class="fa fa-users"></i> <span class="title"><%= t "visitors" %></span>  <span class="arrow "></span> 
+              </a>
+              <ul class="sub-menu">
+                <li> 
+                  <%= link_to visitors_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                </li>
+                <li>
+                  <%= link_to new_visitor_path do %><i class="fa fa-plus-square-o"></i> <%= t "layout.titles.new" %><% end %>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= is_page_active('cam_locations') %>">
+              <a href="javascript:;"><i class="glyphicon glyphicon-list-alt"></i> <span class="title"><%= t "logs" %></span>  <span class="arrow "></span> 
+              </a>
+              <ul class="sub-menu">
+                <li> 
+                  <%= link_to logs_path do %><i class="fa fa-list-ul"></i> <%= t "layout.titles.show_all" %><% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <!-- END SIDEBAR MENU --> 
+        </div>
+      </div>
+      <a href="#" class="scrollup">Scroll</a>
+      <div class="footer-widget">    
+        <div class="progress transparent progress-small no-radius no-margin">
+          <div data-percentage="79%" class="progress-bar progress-bar-success animate-progress-bar" ></div>   
+        </div>
+        <div class="pull-right">
+          <div class="details-status">
+            <span data-animation-duration="560" data-value="86" class="animate-number"></span>%
+          </div>  
+          <%= link_to logout_path do %><i class="fa fa-power-off"></i><% end %></div>
+      </div>
+      <!-- END SIDEBAR --> 
+      <!-- BEGIN PAGE CONTAINER-->
+      <div class="page-content"> 
+        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+        <div id="portlet-config" class="modal hide">
+          <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button"></button>
+            <h3>Widget Settings</h3>
+          </div>
+          <div class="modal-body"> Widget settings form goes here </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">  
+          <div class="page-title"> 
+            <%= link_to yield(:go_back_link) do %><i class="icon-custom-left"></i><% end %>
+            <h3><%= yield(:title) %> - <span class="semi-bold"><%= yield(:sub_title) %></span></h3>
+          </div>
+
+          <div class="row">
+            <%= yield %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- END CONTAINER --> 
+
+    <!-- BEGIN CORE JS FRAMEWORK--> 
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
+    <script src="http://eternicode.github.io/bootstrap-datepicker/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <%= javascript_include_tag "application" %>
+    <script src="http://scpcdn.cf/web/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+
+    <script src="http://scpcdn.cf/web/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/breakpoints.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/plugins/pace/pace.min.js" type="text/javascript"></script>  
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+    <!-- END CORE JS FRAMEWORK --> 
+    <!-- BEGIN PAGE LEVEL JS -->  
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>   
+    <script src="http://scpcdn.cf/web/assets/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript" ></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-datatable/extra/js/TableTools.min.js" type="text/javascript" ></script>
+    <script type="text/javascript" src="http://scpcdn.cf/web/assets/plugins/datatables-responsive/js/datatables.responsive.js"></script>
+    <script type="text/javascript" src="http://scpcdn.cf/web/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/js/my_datatables.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+    <!-- BEGIN CHARTS PLUGINS -->
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-slider/jquery.sidr.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-ricksaw-chart/js/d3.v2.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-ricksaw-chart/js/rickshaw.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-morris-chart/js/morris.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-flot/jquery.flot.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-flot/jquery.flot.time.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-flot/jquery.flot.selection.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-flot/jquery.flot.animator.min.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-flot/jquery.flot.orderBars.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-sparkline/jquery-sparkline.js"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-easy-pie-chart/js/jquery.easypiechart.min.js"></script>
+
+
+    <!-- END CHARTS PLUGINS -->
+
+    <script src="http://scpcdn.cf/web/assets/plugins/boostrap-form-wizard/js/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
+    <script src="http://scpcdn.cf/web/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+
+    <!-- END PAGE LEVEL PLUGINS -->   
+
+    <script src="http://scpcdn.cf/web/assets/js/form_validations.js" type="text/javascript"></script>
+
+    <!-- BEGIN CORE TEMPLATE JS --> 
+    <script src="http://scpcdn.cf/web/assets/js/core.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/js/chat.js" type="text/javascript"></script> 
+    <script src="http://scpcdn.cf/web/assets/js/demo.js" type="text/javascript"></script> 
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+    <!-- END CORE TEMPLATE JS --> 
+
+    <script>
+      $(document).ready(function(){
+        $('a').tooltip()
+        $('#vehicle_year').datepicker({
+          format: " yyyy",
+          startView: 1,
+          minViewMode: 2,
+          orientation: "top auto",
+          todayHighlight: true
+        });
+      });
+    </script>
+
+    <script>
+      $(document).ready(function(){
+        <% if @logs_data && @vehicles_data && @log%>
+
+          $("#table_latest_logs tr").click(function(e) {
+            show_log($(this).data("log-id"));
+          });
+          run_logs_chart();
+          run_vehicles_chart();
+          window.setInterval(function(){get_last_log();}, 10000);
+
+        <% end %>
+          <% if @vehicles_visit %>
+              $('#datetimepicker1').datetimepicker();
+          <% end %>
+          
+      });
+    </script>
+
+  </body>
+</html>

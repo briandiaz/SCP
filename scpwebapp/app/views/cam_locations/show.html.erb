@@ -1,0 +1,40 @@
+<% title t "cam_locations" %>
+<% icon_title "video-camera" %>
+<% sub_title "# " + @cam_location.id.to_s %>
+<% go_back_link cam_locations_path %>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12 ">	
+    <div class="grid simple ">
+      <div class="grid-title">
+        <%= link_to edit_cam_location_path(@cam_location), :class => 'btn btn-warning'  do %>
+            <%= glyph(:edit) %> <%= t('.edit', :default => t("helpers.links.edit")) %>
+            <% end %>
+            <%= link_to cam_location_path(@cam_location),
+:method => 'delete',
+:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+:class => 'btn btn-danger' do %>
+            <%= glyph(:remove) %> <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+            <% end %>
+        <div class="tools">
+          <a href="javascript:;" class="collapse"></a>
+          <a href="javascript:;" class="reload"></a>
+        </div>
+      </div>
+      <div class="grid-body ">
+        <div class="row">
+          <div class="col-sm-6 col-md-6">
+            <img src="<%= @cam_location_image %>" class="img-responsive">
+          </div>
+          <div class="col-sm-6 col-md-6">
+            <h3><%= link_to @cam_location.location, @cam_location, "data-toggle"=>"tooltip", "data-placement"=>"top", :title => t("properties.location") %></h3>
+            <h4><%= link_to @cam_location.ip_addres, @cam_location, "data-toggle"=>"tooltip", "data-placement"=>"top", :title => t("properties.ip_address") %></h4>
+            <h4><%= link_to @cam_location.mac_address, @cam_location, "data-toggle"=>"tooltip", "data-placement"=>"top", :title => t("properties.mac_address") %></h4>
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> 
+</div> 

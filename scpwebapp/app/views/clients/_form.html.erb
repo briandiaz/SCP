@@ -1,0 +1,53 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="grid simple">
+    <div class="grid-title no-border">
+      <h4><%= t "clients" %> <%= t("form.titles.details").html_safe %></h4>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
+        <a href="javascript:;" class="reload"></a>
+      </div>
+    </div>
+    <div class="grid-body no-border">
+      <br>
+
+      <%= form_for @client, :html => {:role => "form", :novalidate =>"novalidate"}  do |f| %>
+      <% if @client.errors.any? %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Nooo!</strong> <%= t("form.errors.found") %> <%= pluralize(@client.errors.count, "error") %>. <a href="#" class="alert-link"><%= t("form.errors.change") %></a> <%= t("form.errors.try") %>.
+        <ul>
+          <% @client.errors.full_messages.each do |msg| %>
+          <li class="alert-link"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :person_id, :class => 'form-label' %>
+        <div class="input-with-icon  right error-control">
+          <i class="fa-exclamation fa"></i>
+          <%= collection_select(
+                    :client,
+                    :person_id,
+                    Person.order("identification_card"), 
+                    :id,
+                    :identification_card,
+  {:prompt => t("form.titles.select_by_identification_card")},
+                    {:class => "form-control",:required => true}
+                ) %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <div class="pull-right">
+          <%= f.submit t("form.buttons.save"), :class => 'btn btn-primary btn-cons' %>
+          <%= link_to clients_path, :class=> "btn btn-danger btn-cons" do %>
+          <%= t "form.buttons.cancel" %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
